@@ -32,7 +32,7 @@ class ImageGallery extends Component {
   }
 
   render() {
-    const { data, isLoading, error } = this.state;
+    const { data, isLoading } = this.state;
 
     return (
       <>
