@@ -3,6 +3,7 @@ import api from 'Services/getImages';
 import css from './ImageGallery.module.css';
 import ImageGalleryItem from '../ImageGalleryItem';
 import Loader from 'components/Loader/Loader';
+import Button from '../Button/Button';
 
 class ImageGallery extends Component {
   state = {
@@ -10,6 +11,7 @@ class ImageGallery extends Component {
     page: 1,
     isLoading: false,
     error: null,
+    hidden: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,15 +32,18 @@ class ImageGallery extends Component {
         });
     }
   }
-
+  handleLoadMore = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+  };
   render() {
-    const { data, isLoading } = this.state;
+    const { data, isLoading, hidden } = this.state;
 
     return (
       <>
         {isLoading && <Loader />}
         <ul className={css.ImageGallery}>
           <ImageGalleryItem data={data} />
+          {hidden && <Button onClick={this.handleLoadMore} />}
         </ul>
       </>
     );
