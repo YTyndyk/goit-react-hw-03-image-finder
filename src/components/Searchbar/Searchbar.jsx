@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import css from './Searchbar.module.css';
+import { AiOutlineSearch } from 'react-icons/ai';
+import css from '../styles.module.css';
 
 export default class Searchbar extends Component {
   state = { name: '' };
@@ -11,6 +12,10 @@ export default class Searchbar extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.onSearch(this.state.name);
+    if (this.state.name.trim() === '') {
+      alert('Please enter a valid name!');
+      return;
+    }
     this.setState({ name: '' });
   };
 
@@ -18,12 +23,18 @@ export default class Searchbar extends Component {
     return (
       <header className={css.Searchbar}>
         <form className={css.SearchForm} onSubmit={this.handleSubmit}>
-          <button type="submit" className={css.SearchFormButton}>
-            <span className={css.SearchFormButtonLabel}>Search</span>
+          <button
+            type="submit"
+            className={css['SearchForm-button']}
+            onClick={this.handleSubmit}
+          >
+            <span className={css['SearchForm-button-label']}>
+              <AiOutlineSearch fill="black" size="20px" />
+            </span>
           </button>
 
           <input
-            className={css.SearchFormInput}
+            className={css['SearchForm-input']}
             type="text"
             autoComplete="off"
             autoFocus

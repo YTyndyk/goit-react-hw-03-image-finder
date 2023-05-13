@@ -1,5 +1,6 @@
-import React from 'rect';
-import css from './Button.module.css';
+import React from 'react';
+import css from '../styles.module.css';
+
 const Button = props => {
   const { onClick } = props;
   return (
