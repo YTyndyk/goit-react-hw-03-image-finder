@@ -1,11 +1,10 @@
 import React from 'react';
 import css from '../styles.module.css';
 
-const Button = props => {
-  const { onClick } = props;
+const Button = ({ children, type = 'button', onClick = null }) => {
   return (
-    <button type="button" onClick={onClick} className={css.Button}>
-      Load more
+    <button type={type} onClick={onClick} className={css.Button}>
+      {children}
     </button>
   );
 };

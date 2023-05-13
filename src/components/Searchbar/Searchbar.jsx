@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
+
 import css from '../styles.module.css';
 
 export default class Searchbar extends Component {
@@ -11,11 +12,12 @@ export default class Searchbar extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSearch(this.state.name);
+
     if (this.state.name.trim() === '') {
-      alert('Please enter a valid name!');
-      return;
+      return alert('Please enter a valid name!');
     }
+
+    this.props.onSearch(this.state.name);
     this.setState({ name: '' });
   };
 
