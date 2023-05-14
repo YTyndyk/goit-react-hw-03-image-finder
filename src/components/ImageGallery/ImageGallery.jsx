@@ -2,8 +2,8 @@ import { Component } from 'react';
 import api from 'Services/getImages';
 import css from '../styles.module.css';
 import ImageGalleryItem from '../ImageGalleryItem';
-import Loader from 'components/Loader/Loader';
 import Button from '../Button/Button';
+import Loader from 'components/Loader/Loader';
 
 class ImageGallery extends Component {
   state = {
@@ -36,7 +36,7 @@ class ImageGallery extends Component {
   };
   render() {
     const { data, isLoading, error } = this.state;
-    const { searchText } = this.props;
+    const { searchText, getModalImage } = this.props;
 
     return (
       <>
@@ -44,8 +44,8 @@ class ImageGallery extends Component {
         {!searchText && <div>Let`s find images together!</div>}
         {error && <h1>{error}</h1>}
 
-        <ul className={css.ImageGallery}>
-          <ImageGalleryItem data={data} />
+        <ul className={css.ImageGallery} onClick={getModalImage}>
+          <ImageGalleryItem data={data} key={data.id} />
           <Button onClick={this.handleLoadMore}>Load More</Button>
         </ul>
       </>
