@@ -184,3 +184,9 @@
 .Button:focus {
   background-color: #303f9f;
 }
+.text {
+  max-width: 100%;
+  text-align: center;
+  font-size: 25px;
+  color: grey;
+}
