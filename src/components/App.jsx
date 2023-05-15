@@ -18,7 +18,6 @@ export class App extends Component {
   };
 
   getModalImage = e => {
-    console.log(e);
     return this.setState({ image: e.target.id, showModal: true });
   };
 
